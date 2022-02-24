@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Animacija</title>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			:root {
+				--gradijent: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+				--clr-pozadina: #050210;
+			}
+
+			body {
+				background-color: var(--clr-pozadina);
+				font-size: 16px;
+				width: 100vw;
+				height: 100vh;
+			}
+
+			#gradijent {
+				position: absolute;
+				width: 8rem;
+				height: 8rem;
+				background: var(--gradijent);
+				border-radius: 50%;
+				margin: auto;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				animation: rotacija 1s linear infinite;
+			}
+
+			#gradijent:before {
+				position: absolute;
+				content: "";
+				left: -5%;
+				right: -5%;
+				bottom: -5%;
+				top: -5%;
+				border-radius: 50%;
+				background: var(--gradijent);
+				filter: blur(1rem);
+				opacity: 0.5;
+			}
+
+			#gradijent:after {
+				content: "";
+				position: absolute;
+				left: 5%;
+				right: 5%;
+				bottom: 5%;
+				top: 5%;
+				border-radius: 50%;
+				background: var(--clr-pozadina);
+			}
+
+			#unutrasnji-krug {
+				position: absolute;
+				background: #100633;
+				width: 90%;
+				height: 90%;
+				border-radius: 50%;
+				z-index: 1;
+				margin: auto;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				animation: pulse 1s linear infinite;
+			}
+
+			@keyframes rotacija {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			@keyframes pulse {
+				from {
+					transform: scale(0);
+					opacity: 1;
+				}
+				to {
+					transform: scale(1);
+					opacity: 0;
+				}
+			}
+
+			@media screen and (min-width: 769px) {
+				#gradijent {
+					width: 16rem;
+					height: 16rem;
+				}
+				#gradijent:before {
+					filter: blur(1.5rem);
+				}
+			}
+
+			@media screen and (min-width: 1201px) {
+				#gradijent {
+					width: 24rem;
+					height: 24rem;
+				}
+				#gradijent:before {
+					filter: blur(2rem);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="gradijent">
+			<div id="unutrasnji-krug"></div>
+		</div>
+	</body>
+</html>
